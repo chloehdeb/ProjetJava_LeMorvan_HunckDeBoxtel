@@ -1,0 +1,26 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class ServerEmission implements Runnable {
+
+    private PrintWriter out;
+    private String message = null;
+    private Scanner sc = null;
+
+    public ServerEmission(PrintWriter out) {
+        this.out = out;
+    }
+
+    public void run() {
+
+        sc = new Scanner(System.in);
+
+        while(true){
+        	//on envoi un message depis la console serveur aux clients
+            message = sc.nextLine();
+            out.println(message);
+            out.flush();
+        }
+    }
+}
